@@ -1,0 +1,32 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <mat-form-field class="example-full-width">
+        <mat-label>Procurar Jogador pelo ID </mat-label>
+        <input matInput type="text" name="id" #id="ngModel" ngModel required>
+    </mat-form-field>
+
+
+ 
+
+</form>
+
+
+<p></p>
+
+<table >
+    <tr>
+        <th>Id</th>
+        <th>Primeiro Nome</th>
+        <th>Sobrenome</th>
+        <th>Posição</th>
+        <th>Time</th>
+        <th>Conferência</th>
+    </tr>
+    <tr *ngFor="let p of player" [ngClass]="color(form.value.id == p.id)">
+        <td > {{ p.id }}</td>
+        <td> {{ p.first_name }} - {{ p.first_name | ultimaLetra}} </td>
+        <td> {{ p.last_name }} </td>
+        <td> {{ p.position }} </td>
+        <td> {{ p.team.full_name }} </td>
+        <td> {{ p.team.conference }} </td>
+    </tr>
+</table>
